@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Kanak 💕</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@700;900&family=Cinzel:wght@700&family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Allura&family=Fredoka+One&family=Josefin+Sans:wght@300;400;600&family=Quicksand:wght@500;600;700&family=Montserrat:wght@600;700;800&family=Poppins:wght@600&family=Bebas+Neue&family=Courier+Prime&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:wght@400;600&family=Dancing+Script:wght@500;700&family=Libre+Baskerville:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Libre Baskerville', serif; overflow: hidden; width: 100vw; height: 100dvh; position: relative; background-color: #000; touch-action: manipulation; }
+
+        /* SCENE STYLES */
+        .scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; opacity: 0; transition: opacity 0.8s ease; z-index: 1; }
+        .scene.active { display: flex; opacity: 1; z-index: 2; }
+
+        /* PRE-SCENE */
+        #preScene { background: linear-gradient(135deg, #1a0b2e 0%, #16213e 100%); justify-content: center; align-items: center; flex-direction: column; position: relative; overflow: hidden; }
+        .stars { position: absolute; width: 100%; height: 100%; overflow: hidden; pointer-events: none; }
+        .star { position: absolute; width: 2px; height: 2px; background: white; border-radius: 50%; animation: twinkle 3s infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .game-console { font-size: 80px; margin-bottom: 30px; animation: bounce 1s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .loading-title { font-family: 'Orbitron', sans-serif; font-size: 36px; color: #00f2ff; text-shadow: 0 0 20px #00f2ff, 3px 3px 0 #ff006e; margin-bottom: 50px; animation: glitch 1s infinite; text-align: center; padding: 0 20px; }
+        @keyframes glitch { 0%, 100% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(2px, -2px); } 60% { transform: translate(-2px, -2px); } 80% { transform: translate(2px, 2px); } }
+        .start-button { padding: 15px 40px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; color: white; background: linear-gradient(135deg, #ff006e, #7209b7); border: 3px solid #00f2ff; border-radius: 50px; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 30px #00f2ff, 0 10px 30px rgba(0,0,0,0.5); animation: buttonPulse 2s infinite; transition: all 0.3s ease; z-index: 10; }
+        @keyframes buttonPulse { 0%, 100% { box-shadow: 0 0 30px #00f2ff, 0 10px 30px rgba(0,0,0,0.5); } 50% { box-shadow: 0 0 60px #00f2ff, 0 10px 30px rgba(0,0,0,0.5); } }
+
+        /* SCENE 0 */
+        #scene0 { background: linear-gradient(135deg, #ffc8dd 0%, #ffafcc 50%, #ffc2d1 100%); justify-content: center; align-items: center; flex-direction: column; cursor: pointer; }
+        .aurora { position: absolute; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(255,200,221,0.3) 0%, rgba(255,175,204,0.5) 25%, rgba(255,194,209,0.3) 50%, rgba(255,175,204,0.5) 75%, rgba(255,200,221,0.3) 100%); animation: auroraMove 10s infinite; pointer-events: none; }
+        @keyframes auroraMove { 0%, 100% { transform: translateX(-10%); opacity: 0.3; } 50% { transform: translateX(10%); opacity: 0.6; } }
+        .bokeh-circle { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.4), transparent); animation: float 10s infinite; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, -30px); } }
+        .title-container { text-align: center; z-index: 10; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .title-line1 { font-family: 'Cinzel Decorative', serif; font-size: 28px; color: #c9184a; margin: 0; opacity: 0; animation: fadeInBlur 1s forwards; }
+        .title-line2 { font-family: 'Great Vibes', cursive; font-size: 60px; background: linear-gradient(135deg, #ffd700, #ff006e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0; animation: zoomInSparkle 1.5s 1s forwards; padding: 0 20px; line-height: 1.1; }
+        .tap-text { font-family: 'Josefin Sans', sans-serif; font-size: 16px; color: white; margin-top: 60px; opacity: 0; animation: pulseFade 2s 2.5s infinite; letter-spacing: 2px; text-transform: uppercase; }
+        @keyframes fadeInBlur { 0% { opacity: 0; filter: blur(10px); } 100% { opacity: 1; filter: blur(0); } }
+        @keyframes zoomInSparkle { 0% { opacity: 0; transform: scale(0.3); } 70% { transform: scale(1.1); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes pulseFade { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .petal { position: absolute; font-size: 30px; opacity: 0.7; animation: petalFall 8s infinite; pointer-events: none; }
+        @keyframes petalFall { 0% { transform: translateY(-100px) rotate(0deg); opacity: 0; } 10% { opacity: 0.7; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+
+        /* SCENE 1: GAME */
+        #scene1 { background: linear-gradient(135deg, #ffc8dd 0%, #e0b0ff 50%, #bde0fe 100%); justify-content: center; align-items: center; flex-direction: column; }
+        .game-header { width: 100%; text-align: center; position: absolute; top: 30px; pointer-events: none; }
+        .game-title { font-family: 'Fredoka One', cursive; font-size: 32px; background: linear-gradient(135deg, #ff006e, #7209b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gentleBounce 3s infinite; width: 90%; margin: 0 auto; }
+        @keyframes gentleBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .score-counter { position: absolute; top: 20px; right: 20px; background: white; padding: 10px 20px; border-radius: 20px; border: 3px solid #ff006e; font-family: 'Poppins', sans-serif; font-size: 20px; color: #ff006e; font-weight: 600; z-index: 10; }
+        .game-area { position: relative; width: 95%; height: 60%; max-width: 1000px; margin-top: 60px; }
+        .emoji { position: absolute; font-size: 55px; cursor: pointer; transition: transform 0.2s; user-select: none; }
+        .emoji:hover { transform: scale(1.2); }
+        .victory-screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 100; }
+        .victory-screen.show { display: flex; }
+        .victory-main { font-family: 'Fredoka One', cursive; font-size: 48px; background: linear-gradient(90deg, #ff006e, #7209b7, #00f2ff, #7209b7, #ff006e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: rainbow 3s linear infinite, bounceIn 0.8s; margin-bottom: 20px; text-align: center; padding: 0 10px; }
+        .victory-subtitle { font-family: 'Quicksand', sans-serif; font-size: 24px; color: #ffd700; text-shadow: 2px 2px 4px rgba(255,107,149,0.5); margin-bottom: 10px; text-align: center; }
+        .victory-text { font-family: 'Josefin Sans', sans-serif; font-size: 18px; color: #c9184a; margin-bottom: 40px; text-align: center; }
+        @keyframes rainbow { to { background-position: 200% center; } }
+        @keyframes bounceIn { 0% { transform: scale(0) translateY(-100px); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+        .continue-btn { padding: 15px 40px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 20px; color: white; background: linear-gradient(135deg, #ff006e, #7209b7); border: 3px solid white; border-radius: 50px; cursor: pointer; animation: buttonPulseRainbow 2s infinite; transition: transform 0.3s; }
+        @keyframes buttonPulseRainbow { 0%, 100% { box-shadow: 0 0 20px #ff006e; } 50% { box-shadow: 0 0 40px #7209b7; } }
+        .confetti { position: absolute; width: 10px; height: 10px; background: #ff006e; animation: confettiFall 3s infinite; pointer-events: none; }
+        @keyframes confettiFall { to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+
+        /* SCENE 2-9 */
+        #scene2 { background: linear-gradient(135deg, #ffb3ba 0%, #ffcbb3 50%, #ffc9b3 100%); justify-content: center; align-items: center; padding: 30px; }
+        .message-container { max-width: 800px; text-align: left; position: relative; z-index: 10; width: 100%; }
+        .typing-line { font-family: 'Libre Baskerville', serif; font-size: 22px; color: #2a2a2a; margin-bottom: 20px; opacity: 0; min-height: 1.2em; line-height: 1.4; }
+        .typing-line.greeting { font-family: 'Dancing Script', cursive; font-size: 42px; color: #c9184a; }
+
+        #scene3, #scene4 { background: linear-gradient(135deg, #ffd6ba 0%, #ffc2d1 50%, #ffafcc 100%); justify-content: center; align-items: center; }
+        #scene4 { background: linear-gradient(135deg, #ff006e 0%, #d00046 50%, #7209b7 100%); }
+        .quiz-card, .deep-card { padding: 40px 30px; border-radius: 20px; width: 90%; max-width: 500px; position: relative; text-align: center; }
+        .quiz-card { background: white; box-shadow: 0 20px 60px rgba(255,107,149,0.3); }
+        .deep-card { background: linear-gradient(135deg, #5a189a, #b5179e); border: 3px solid white; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .quiz-question, .deep-question { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 25px; line-height: 1.3; }
+        .quiz-question { color: #c9184a; } .deep-question { color: white; }
+        .quiz-options, .deep-buttons { display: flex; flex-direction: column; gap: 15px; }
+        .deep-buttons { flex-direction: row; justify-content: center; flex-wrap: wrap; }
+        .quiz-option { padding: 15px 20px; font-family: 'Montserrat', sans-serif; font-size: 16px; background: linear-gradient(135deg, #ffcad4, #f4acb7); border: 2px solid transparent; border-radius: 15px; color: #2a2a2a; }
+        .quiz-option.correct { animation: glowGold 0.5s forwards; }
+        @keyframes glowGold { to { background: linear-gradient(135deg, #ffd700, #ffaa00); box-shadow: 0 0 30px #ffd700; transform: scale(1.05); } }
+        .deep-btn { padding: 15px 30px; font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: white; background: linear-gradient(135deg, #ff006e, #f72585); border: none; border-radius: 50px; box-shadow: 0 5px 15px rgba(255,107,149,0.4); }
+        .deep-btn.no { background: linear-gradient(135deg, #6c757d, #495057); }
+        .card-flip { animation: flip 0.6s; }
+        @keyframes flip { 0%, 100% { transform: perspective(800px) rotateY(0deg); } 50% { transform: perspective(800px) rotateY(180deg); } }
+        .heart-indicator { position: absolute; top: 15px; right: 15px; font-size: 14px; font-family: 'Poppins', sans-serif; color: #ff006e; }
+        .appreciation-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: #ff006e; margin-top: 15px; opacity: 0; animation: fadeIn 0.5s forwards; }
+        .okk-text { font-family: 'Dancing Script', cursive; font-size: 28px; color: #ffd700; margin-top: 15px; opacity: 0; animation: fadeInBounce 0.5s forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInBounce { 0% { opacity: 0; transform: translateY(-20px); } 50% { transform: translateY(5px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        #scene5 { background: linear-gradient(135deg, #3c096c 0%, #10002b 100%); justify-content: center; align-items: center; overflow: hidden; padding: 20px; }
+        .reveal-text { font-family: 'Cinzel', serif; font-size: 40px; color: #ffd700; text-shadow: 0 0 30px #ffd700; text-align: center; opacity: 0; animation: dramaticZoom 1.5s forwards; line-height: 1.2; }
+        @keyframes dramaticZoom { 0% { opacity: 0; transform: scale(0.3) rotate(-5deg); } 70% { transform: scale(1.1) rotate(2deg); } 100% { opacity: 1; transform: scale(1) rotate(0deg); } }
+        .reveal-text.second { background: linear-gradient(135deg, #ff006e, #f72585); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-top: 20px; animation: typeReveal 2s 1.5s forwards; }
+        @keyframes typeReveal { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .golden-rays { position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(255,215,0,0.1) 5deg, transparent 10deg, transparent 20deg); animation: rotateRays 20s linear infinite; pointer-events: none; }
+        @keyframes rotateRays { to { transform: rotate(360deg); } }
+
+        #scene6 { background: linear-gradient(135deg, #240046, #000000); justify-content: center; align-items: center; overflow: hidden; }
+        .scratch-container { position: relative; width: 90%; max-width: 500px; height: 400px; user-select: none; }
+        .scratch-content { position: absolute; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+        .hidden-text { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-style: italic; background: linear-gradient(135deg, #ffd700, #ff8c69); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; line-height: 1.3; }
+        .hidden-text.small { font-size: 24px; color: #ff006e; margin-top: 10px; }
+        .scratch-overlay { position: absolute; width: 100%; height: 100%; background: transparent; cursor: crosshair; border-radius: 20px; touch-action: none; }
+
+        #scene7 { background: #000000; justify-content: center; align-items: center; }
+        .typing-cursor { display: inline-block; width: 3px; height: 30px; background: white; animation: blink 0.5s infinite; }
+        @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+        #scene8 { background: linear-gradient(135deg, #000000, #1a0033); justify-content: center; align-items: center; padding: 30px; }
+        .typing-container { max-width: 800px; font-family: 'Courier Prime', monospace; font-size: 22px; color: white; line-height: 1.6; width: 100%; }
+        .typed-line { opacity: 0; margin-bottom: 15px; }
+        .ready-button { padding: 15px 40px; font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; color: white; background: linear-gradient(135deg, #ff006e, #f72585, #b5179e); border: 3px solid white; border-radius: 50px; cursor: pointer; margin-top: 40px; opacity: 0; animation: glowPulse 2s infinite; display: block; margin-left: auto; margin-right: auto; }
+        @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 20px #ff006e; } 50% { box-shadow: 0 0 40px #ff006e; } }
+
+        #scene9 { background: linear-gradient(135deg, #ffc8dd, #e0b0ff, #bde0fe, #ffd700, #ff006e, #7209b7); background-size: 400% 400%; animation: gradientShift 3s infinite; justify-content: center; align-items: center; overflow: hidden; padding: 20px; }
+        .countdown-container { text-align: center; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+        .countdown-title { font-family: 'Fredoka One', cursive; font-size: 28px; color: white; text-shadow: 0 0 20px rgba(255,255,255,0.8); margin-bottom: 10px; text-align: center; line-height: 1.4; }
+        .countdown-number { font-family: 'Bebas Neue', cursive; font-size: 140px; background: linear-gradient(90deg, #ff006e, #ffd700, #00f2ff, #7209b7); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: rainbow 2s linear infinite; line-height: 1; margin-top: 0; }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .floating-emoji { position: absolute; font-size: 40px; animation: floatEmoji 3s infinite; pointer-events: none; }
+        @keyframes floatEmoji { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-50px) rotate(180deg); } }
+
+        /* SCENE 10: THE LETTER */
+        #scene10 { background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #ff6b95 75%, #feca57 100%); background-size: 400% 400%; animation: gradientFlow 15s ease infinite; display: flex; justify-content: flex-start; align-items: center; flex-direction: column; padding: 20px 15px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .floating-hearts { position: fixed; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 1; }
+        .heart-float { position: absolute; font-size: 20px; opacity: 0; animation: floatUp 8s infinite ease-in; }
+        .heart-float:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart-float:nth-child(2) { left: 20%; animation-delay: 2s; font-size: 15px; }
+        .heart-float:nth-child(3) { left: 35%; animation-delay: 4s; font-size: 25px; }
+        .heart-float:nth-child(4) { left: 50%; animation-delay: 1s; }
+        .heart-float:nth-child(5) { left: 65%; animation-delay: 3s; font-size: 18px; }
+        .heart-float:nth-child(6) { left: 80%; animation-delay: 5s; }
+        .heart-float:nth-child(7) { left: 90%; animation-delay: 2.5s; font-size: 22px; }
+        @keyframes floatUp { 0% { bottom: -50px; opacity: 0; transform: translateX(0) rotate(0deg); } 10% { opacity: 0.6; } 50% { opacity: 0.8; transform: translateX(20px) rotate(180deg); } 100% { bottom: 110%; opacity: 0; transform: translateX(-20px) rotate(360deg); } }
+        .card-container { background: linear-gradient(135deg, rgba(255, 240, 245, 0.98) 0%, rgba(255, 228, 238, 0.98) 100%); width: 100%; max-width: 700px; padding: 50px 30px; border-radius: 30px; box-shadow: 0 30px 80px rgba(255, 107, 149, 0.4), 0 10px 30px rgba(118, 75, 162, 0.3); position: relative; overflow: visible; z-index: 2; border: 3px solid rgba(255, 255, 255, 0.8); margin: 20px auto 40px auto; flex-shrink: 0; }
+        .card-container::after { content: '💕 ✨ 💗 🌸 💖 ⭐ 💕 🌹 ✨ 💗 💫 💖 🌸 💕 ⭐ 💗 🌹 ✨ 💖 💫 💕 🌸 💗 ⭐ 💖 🌹 💕 ✨ 💗 💫 🌸 💖 ⭐ 💕 🌹 💗 ✨ 💖 💫 🌸 💕 ⭐ 💗 🌹 💖 ✨ 💕 💫 🌸 💗 ⭐ 💖 🌹 💕 ✨ 💗 💫 💖 🌸 ⭐ 💕 🌹 💗 ✨ 💖 💫 🌸 💕 ⭐ 💗 🌹 💖 ✨ 💕'; position: absolute; top: 0; left: 0; right: 0; bottom: 0; font-size: 18px; opacity: 0.08; word-wrap: break-word; line-height: 60px; letter-spacing: 35px; padding: 40px; border-radius: 30px; pointer-events: none; z-index: 1; overflow: hidden; }
+        .card-container::before { content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 8px solid transparent; border-radius: 25px; background: linear-gradient(90deg, #ff6b95, #f093fb, #764ba2, #667eea, #ff6b95) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; background-size: 200% 100%; animation: shimmer 3s linear infinite; pointer-events: none; }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .rose-decoration { position: absolute; font-size: 40px; opacity: 0.25; transform: rotate(-15deg); pointer-events: none; }
+        .rose-top-left { top: -5px; left: -5px; animation: rotateRose 10s ease-in-out infinite; }
+        .rose-top-right { top: -5px; right: -5px; animation: rotateRose 12s ease-in-out infinite reverse; }
+        .rose-bottom-left { bottom: -5px; left: 5px; animation: rotateRose 11s ease-in-out infinite; }
+        .rose-bottom-right { bottom: -5px; right: 0px; animation: rotateRose 13s ease-in-out infinite reverse; }
+        @keyframes rotateRose { 0%, 100% { transform: rotate(-15deg) scale(1); } 50% { transform: rotate(15deg) scale(1.1); } }
+        .sparkle { position: absolute; width: 4px; height: 4px; background: radial-gradient(circle, #ff6b95, transparent); border-radius: 50%; animation: sparkleAnim 2s ease-in-out infinite; }
+        .sparkle:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 25%; right: 15%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { bottom: 30%; right: 10%; animation-delay: 1.5s; }
+        @keyframes sparkleAnim { 0%, 100% { opacity: 0; transform: scale(0); } 50% { opacity: 1; transform: scale(3); } }
+        .header-decoration { text-align: center; margin-bottom: 25px; position: relative; z-index: 2; }
+        .heart-banner { font-size: 30px; letter-spacing: 10px; display: inline-block; }
+        .heart-banner span { display: inline-block; animation: bounceHeart 2s ease-in-out infinite; }
+        .heart-banner span:nth-child(2) { animation-delay: 0.3s; }
+        .heart-banner span:nth-child(3) { animation-delay: 0.6s; }
+        .greeting { font-family: 'Dancing Script', cursive; font-size: 36px; font-weight: 700; background: linear-gradient(135deg, #ff6b95, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 25px; text-align: left; text-shadow: 2px 2px 4px rgba(255, 107, 149, 0.2); position: relative; z-index: 2; }
+        .message { font-family: 'Libre Baskerville', serif; font-size: 16px; line-height: 1.7; color: #2a2a2a; margin-bottom: 20px; text-align: left; font-weight: 400; letter-spacing: 0.3px; position: relative; z-index: 2; }
+        .message p { margin-bottom: 12px; }
+        .love-declaration { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; font-style: italic; background: linear-gradient(135deg, #ff0844, #ff6b95); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; padding: 20px 10px; margin: 20px 0; border: 2px solid #ff6b95; border-radius: 20px; background-color: rgba(255, 255, 255, 0.6); position: relative; box-shadow: 0 4px 15px rgba(255, 107, 149, 0.2); letter-spacing: 0.5px; z-index: 2; }
+        .love-declaration::before, .love-declaration::after { content: '💕'; position: absolute; font-size: 24px; animation: heartbeat 1.5s ease-in-out infinite; z-index: 10; }
+        .love-declaration::before { top: -12px; left: -5px; }
+        .love-declaration::after { bottom: -12px; right: -5px; }
+        .heart { color: #ff0844; font-size: 20px; display: inline-block; animation: heartbeat 1.5s ease-in-out infinite; filter: drop-shadow(0 0 8px rgba(255, 8, 68, 0.5)); }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.2); } 50% { transform: scale(1); } 75% { transform: scale(1.15); } }
+        .signature { margin-top: 40px; text-align: right; font-family: 'Dancing Script', cursive; font-size: 24px; font-weight: 700; background: linear-gradient(90deg, #764ba2, #ff6b95); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; z-index: 2; }
+        .divider { width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #ff6b95, #764ba2, transparent); margin: 30px auto; border-radius: 10px; position: relative; z-index: 2; }
+        .footer-hearts { text-align: center; font-size: 22px; margin-top: 20px; letter-spacing: 10px; opacity: 0.7; position: relative; z-index: 2; }
+        .footer-hearts span { display: inline-block; animation: bounceHeart 2s ease-in-out infinite; }
+        .footer-hearts span:nth-child(2) { animation-delay: 0.3s; }
+        .footer-hearts span:nth-child(3) { animation-delay: 0.6s; }
+        @keyframes bounceHeart { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.1); } }
+        .response-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 40px; flex-wrap: wrap; position: relative; z-index: 10; }
+        .response-btn { padding: 15px 30px; font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: white; border: 3px solid white; border-radius: 50px; cursor: pointer; transition: all 0.3s; width: 100%; max-width: 250px; }
+        .response-btn.yes { background: linear-gradient(135deg, #ff006e, #f72585); }
+        .response-btn.talk { background: linear-gradient(135deg, #b5179e, #d0a4e8); }
+        .final-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.98); padding: 40px 20px; border-radius: 30px; box-shadow: 0 30px 80px rgba(0,0,0,0.3); text-align: center; display: none; z-index: 1000; width: 90%; max-width: 500px; }
+        .final-message.show { display: block; animation: fadeIn 0.5s; }
+        .final-line { font-family: 'Crimson Text', serif; font-size: 24px; color: #c9184a; margin-bottom: 20px; }
+        .final-line.script { font-family: 'Dancing Script', cursive; font-size: 30px; background: linear-gradient(135deg, #ff006e, #f72585); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    </style>
+</head>
+<body>
+    <audio id="sceneAudio"></audio>
+
+    <div class="scene active" id="preScene">
+        <div class="stars" id="starsContainer"></div>
+        <div class="game-console">🎮</div>
+        <div class="loading-title">READY TO PLAY?</div>
+        <button class="start-button" onclick="startExperience()">START GAME ►</button>
+    </div>
+
+    <div class="scene" id="scene0">
+        <div class="aurora"></div>
+        <div class="bokeh" id="bokehContainer"></div>
+        <div class="title-container">
+            <div class="title-line1">A GAME FOR</div>
+            <div class="title-line2">KANAK</div>
+            <div class="title-line1">MADE BY ARJUN</div>
+            <div class="tap-text">Tap anywhere to begin ✨</div>
+        </div>
+    </div>
+
+    <div class="scene" id="scene1">
+        <div class="game-header">
+            <div class="game-title">Heart Collector Game 💕</div>
+            <div class="game-subtitle">Collect 5 hearts to unlock something special ✨</div>
+        </div>
+        <div class="score-counter">Hearts: <span id="heartScore">0</span>/5 ❤️</div>
+        <div class="game-area" id="gameArea"></div>
+        <div class="victory-screen" id="victoryScreen">
+            <div class="victory-main">🎉 YOU WIN! 🎉</div>
+            <div class="victory-subtitle">YOU NAILED IT! 🌟</div>
+            <div class="victory-text">Ready for your reward? 💝</div>
+            <button class="continue-btn" onclick="nextScene(2)">CONTINUE ►</button>
+        </div>
+    </div>
+
+    <div class="scene" id="scene2">
+        <div class="message-container" id="messageContainer"></div>
+    </div>
+
+    <div class="scene" id="scene3">
+        <div class="quiz-card" id="quizCard">
+            <div class="heart-indicator" id="quizHearts">1/5</div>
+            <div id="quizContent"></div>
+        </div>
+    </div>
+
+    <div class="scene" id="scene4">
+        <div class="deep-card" id="deepCard">
+            <div class="heart-indicator" id="deepHearts">3/5</div>
+            <div id="deepContent"></div>
+        </div>
+    </div>
+
+    <div class="scene" id="scene5">
+        <div class="golden-rays"></div>
+        <div>
+            <div class="reveal-text">SO HERE I AM...</div>
+            <div class="reveal-text second">EXPRESSING MY FEELINGS 💖</div>
+        </div>
+    </div>
+
+    <div class="scene" id="scene6">
+        <div class="scratch-container">
+            <div class="scratch-content">
+                <div class="hidden-text">I've fallen for you, Kanak</div>
+                <div class="hidden-text small">And I needed you to know</div>
+                <div style="font-size: 64px; margin-top: 20px;">💕</div>
+            </div>
+            <canvas id="scratchCanvas" class="scratch-overlay"></canvas>
+        </div>
+        <button class="continue-btn" id="scratchBtn" style="display: none; margin-top: 30px;" onclick="nextScene(7)">CONTINUE... 💭</button>
+    </div>
+
+    <div class="scene" id="scene7">
+        <div class="typing-cursor" id="blinkCursor"></div>
+    </div>
+
+    <div class="scene" id="scene8">
+        <div class="typing-container" id="typingContainer"></div>
+    </div>
+
+    <div class="scene" id="scene9">
+        <div class="countdown-container">
+            <div class="countdown-title">Something special unlocks in...</div>
+            <div class="countdown-number" id="countdownNumber">10</div>
+        </div>
+        <div id="floatingEmojis"></div>
+    </div>
+
+    <div class="scene" id="scene10">
+        <div class="floating-hearts">
+            <div class="heart-float">💗</div><div class="heart-float">💖</div>
+            <div class="heart-float">💕</div><div class="heart-float">💗</div>
+            <div class="heart-float">💖</div><div class="heart-float">💕</div>
+            <div class="heart-float">💗</div>
+        </div>
+        <div class="card-container">
+            <div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>
+            <div class="rose-decoration rose-top-left">🌹</div><div class="rose-decoration rose-top-right">🌹</div>
+            <div class="rose-decoration rose-bottom-left">🌹</div><div class="rose-decoration rose-bottom-right">🌹</div>
+            <div class="header-decoration">
+                <div class="heart-banner"><span>❤️</span> <span>💕</span> <span>❤️</span></div>
+            </div>
+            <div class="greeting">Hey Kanak,</div>
+            <div class="message">
+                <p>I need to tell you something I've been holding back for a while now.</p>
+                <p>These past 5 months with you have been different. You're not like anyone else I know—the way you're fearlessly yourself, how you trust me with the real parts of your life, your energy, everything about you. I didn't plan this, but somewhere along the way, I fell for you.</p>
+                <div class="love-declaration">
+                    I love you, Kanak <span class="heart">❤️</span><br>
+                    I really do. Not in some casual way—I mean it.<br>
+                    The way you are, the person you've shown me...<br>
+                    I can't help but feel this way.
+                </div>
+                <p>I know you value honesty, so I'm being completely honest: I really hope you feel something similar. I'd love to see where this could go between us.</p>
+                <p>That said, I also need you to know—if you don't feel the same way, I'll respect that completely. Our friendship matters too much to me, and I promise nothing will change from my side if you are not feeling the same,as I do...</p>
+                <p>But I'm really hoping that you feel the same as i do💖.</p>
+            </div>
+            <div class="divider"></div>
+            <div class="signature">With all my heart 💖</div>
+            <div class="footer-hearts">
+                <span>💕</span> <span>💗</span> <span>💕</span>
+            </div>
+            <div class="response-buttons">
+                <button class="response-btn yes" onclick="showFinalMessage()">I feel the same way 💕</button>
+                <button class="response-btn talk" onclick="showFinalMessage()">Let's talk about this 💬</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="final-message" id="finalMessage">
+        <div class="final-line">Thank you for taking this journey with me ✨</div>
+        <div class="final-line">Take all the time you need.</div>
+        <div class="final-line script">When you're ready, let's talk 💕</div>
+    </div>
+
+    <script>
+        let currentScene = 0;
+        let heartsCollected = 0;
+        let gameEmojis = [];
+        let quizProgress = 0;
+        let deepProgress = 0;
+        let audioContext = null; 
+        
+        // --- CUSTOM SOUND ENGINE ---
+        class SoundEngine {
+            constructor() {
+                this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+                this.audioElement = document.getElementById('sceneAudio');
+                this.currentTrack = null;
+                
+                // Track Mapping
+                this.tracks = {
+                    'pre': 'pre_scene.mp3',
+                    '0': 'scene0.mp3',
+                    '1': 'scene1.mp3',
+                    '2': 'scene2.mp3',
+                    '3': 'scene3.mp3',
+                    '4': 'scene4.mp3',
+                    '5': 'scene5.mp3',
+                    '6': 'scene6.mp3',
+                    '7': 'scene7&8.mp3',
+                    '8': 'scene7&8.mp3', // Same track continued
+                    '9': 'scene9.mp3',
+                    '10': 'final_letter.mp3'
+                };
+            }
+
+            resume() {
+                if (this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+            }
+
+            playSceneMusic(sceneIndex) {
+                const newTrack = this.tracks[sceneIndex];
+                
+                // Stop music if scene has no track
+                if (!newTrack) {
+                    this.audioElement.pause();
+                    this.currentTrack = null;
+                    return;
+                }
+
+                // If it's the SAME track (Scene 7 -> 8), do nothing (let it play)
+                if (this.currentTrack === newTrack) {
+                    return; 
+                }
+
+                // Change track
+                this.audioElement.src = newTrack;
+                this.audioElement.play().catch(e => console.log("Audio play blocked", e));
+                this.currentTrack = newTrack;
+            }
+
+            // SFX: Melodious Typing
+            playClick() {
+                const t = this.ctx.currentTime;
+                const notes = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
+                const note = notes[Math.floor(Math.random() * notes.length)];
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(note, t);
+                gain.gain.setValueAtTime(0, t);
+                gain.gain.linearRampToValueAtTime(0.15, t + 0.01);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(t);
+                osc.stop(t + 0.3);
+            }
+
+            // SFX: Swoosh
+            playSwoosh() {
+                const t = this.ctx.currentTime;
+                const bufferSize = this.ctx.sampleRate * 1.5;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) { data[i] = Math.random() * 2 - 1; }
+                const noise = this.ctx.createBufferSource();
+                noise.buffer = buffer;
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(200, t);
+                filter.frequency.exponentialRampToValueAtTime(3000, t + 1);
+                const gain = this.ctx.createGain();
+                gain.gain.setValueAtTime(0, t);
+                gain.gain.linearRampToValueAtTime(0.2, t + 0.5);
+                gain.gain.linearRampToValueAtTime(0, t + 1.5);
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(this.ctx.destination);
+                noise.start(t);
+            }
+
+            // SFX: Sparkle
+            playSparkle() {
+                const t = this.ctx.currentTime;
+                [0, 0.1, 0.2].forEach((delay, i) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(1200 + (i * 400), t + delay);
+                    gain.gain.setValueAtTime(0.1, t + delay);
+                    gain.gain.exponentialRampToValueAtTime(0.001, t + delay + 1);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start(t + delay);
+                    osc.stop(t + delay + 1);
+                });
+            }
+
+            playBeep(freq) {
+                const t = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.1, t);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(t);
+                osc.stop(t + 0.1);
+            }
+        }
+
+        let soundEngine = new SoundEngine();
+
+        // Try to play pre-scene music on first interaction
+        document.body.addEventListener('touchstart', () => {
+            if(currentScene === 0 && !soundEngine.currentTrack) {
+                soundEngine.resume();
+                soundEngine.playSceneMusic('pre');
+            }
+        }, {once:true});
+        
+        document.body.addEventListener('click', () => {
+            if(currentScene === 0 && !soundEngine.currentTrack) {
+                soundEngine.resume();
+                soundEngine.playSceneMusic('pre');
+            }
+        }, {once:true});
+
+        // Initialize stars
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
+        }
+
+        function createBokeh() {
+            const container = document.getElementById('bokehContainer');
+            for (let i = 0; i < 15; i++) {
+                const bokeh = document.createElement('div');
+                bokeh.className = 'bokeh-circle';
+                bokeh.style.width = (Math.random() * 100 + 50) + 'px';
+                bokeh.style.height = bokeh.style.width;
+                bokeh.style.left = Math.random() * 100 + '%';
+                bokeh.style.top = Math.random() * 100 + '%';
+                bokeh.style.animationDelay = Math.random() * 5 + 's';
+                bokeh.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(bokeh);
+            }
+        }
+
+        function startExperience() {
+            soundEngine.resume();
+            soundEngine.playSparkle();
+            nextScene(0);
+        }
+
+        function nextScene(sceneNum) {
+            const current = document.querySelector('.scene.active');
+            const next = document.getElementById('scene' + sceneNum);
+            
+            if (!current || !next) return;
+
+            if (sceneNum > 0) soundEngine.playSwoosh();
+
+            current.style.opacity = '0';
+            
+            if (current.id === 'scene0') {
+                current.onclick = null;
+            }
+
+            setTimeout(() => {
+                current.classList.remove('active');
+                next.classList.add('active');
+                
+                requestAnimationFrame(() => {
+                    next.style.opacity = '1';
+                    initScene(sceneNum);
+                });
+            }, 800);
+        }
+
+        function initScene(num) {
+            currentScene = num;
+            soundEngine.playSceneMusic(num); // Play music for this scene
+
+            switch(num) {
+                case 0:
+                    createBokeh();
+                    createPetals();
+                    setTimeout(() => {
+                        const s0 = document.getElementById('scene0');
+                        s0.onclick = () => {
+                            s0.onclick = null;
+                            nextScene(1);
+                        };
+                    }, 3000);
+                    break;
+                case 1: initGame(); break;
+                case 2: typeMessage(); break;
+                case 3: startQuiz(); break;
+                case 4: startDeepQuestions(); break;
+                case 5: setTimeout(() => nextScene(6), 6000); break;
+                case 6: setTimeout(initScratch, 100); break;
+                case 7: setTimeout(() => nextScene(8), 3000); break;
+                case 8: startTyping(); break;
+                case 9: startCountdown(); break;
+                case 10: break;
+            }
+        }
+
+        function createPetals() {
+            const scene = document.getElementById('scene0');
+            for (let i = 0; i < 10; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.textContent = '🌸';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDelay = Math.random() * 8 + 's';
+                petal.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                scene.appendChild(petal);
+            }
+        }
+
+        // Updated initGame with GRID LOGIC to prevent overlapping
+        function initGame() {
+            const gameArea = document.getElementById('gameArea');
+            gameArea.innerHTML = '';
+            gameEmojis = [];
+            heartsCollected = 0;
+            document.getElementById('heartScore').textContent = '0';
+            
+            const hearts = ['💕', '💗', '❤️', '💖', '💝'];
+            const decoys = ['🌟', '⭐', '🌸', '🎈', '💫', '🎀', '🌹', '🦋', '✨', '🌺'];
+            
+            // Responsive Columns
+            const isMobile = window.innerWidth < 600;
+            const cols = isMobile ? 3 : 5; // More spacing on mobile
+            const slots = [];
+            const rows = Math.ceil(15 / cols);
+            
+            for(let i=0; i<cols*rows; i++) slots.push(i);
+            
+            // Shuffle slots
+            for(let i = slots.length - 1; i > 0; i--){
+                const j = Math.floor(Math.random() * (i + 1));
+                [slots[i], slots[j]] = [slots[j], slots[i]];
+            }
+
+            let slotIndex = 0;
+
+            // Place Hearts
+            hearts.forEach((heart, i) => {
+                createEmoji(heart, false, i, slots[slotIndex++], cols, rows);
+            });
+            
+            // Place Decoys
+            for (let i = 0; i < 10; i++) {
+                createEmoji(decoys[Math.floor(Math.random() * decoys.length)], true, i, slots[slotIndex++], cols, rows);
+            }
+        }
+
+        function createEmoji(emoji, isDecoy, index, slot, cols, rows) {
+            const elem = document.createElement('div');
+            elem.className = 'emoji' + (isDecoy ? ' decoy' : '');
+            elem.textContent = emoji;
+            
+            // Grid Logic
+            const col = slot % cols;
+            const row = Math.floor(slot / cols);
+            
+            // Calculate spacing based on screen width/height
+            const xSpace = 90 / cols; 
+            const ySpace = 80 / rows;
+            
+            // Add slight random jitter
+            const jitterX = Math.random() * (xSpace * 0.4); 
+            const jitterY = Math.random() * (ySpace * 0.4);
+            
+            elem.style.left = (col * xSpace + jitterX + 2) + '%'; 
+            elem.style.top = (row * ySpace + jitterY + 5) + '%';  
+            
+            elem.style.animation = `float ${Math.random() * 3 + 3}s infinite ease-in-out`;
+            elem.style.animationDelay = (Math.random() * 2) + 's';
+            
+            // Touch start for mobile responsiveness
+            const interaction = (e) => {
+                e.stopPropagation();
+                if(e.type === 'touchstart') e.preventDefault(); // Prevent ghost clicks
+                
+                if (!isDecoy) {
+                    collectHeart(elem);
+                } else {
+                    soundEngine.playBeep(200); 
+                    elem.style.animation = 'none';
+                    elem.offsetHeight; 
+                    elem.style.animation = 'shake 0.3s';
+                    setTimeout(() => {
+                        elem.style.animation = `float ${Math.random() * 3 + 3}s infinite ease-in-out`;
+                    }, 300);
+                }
+            };
+
+            elem.addEventListener('mousedown', interaction);
+            elem.addEventListener('touchstart', interaction);
+            
+            document.getElementById('gameArea').appendChild(elem);
+            gameEmojis.push(elem);
+        }
+
+        function collectHeart(elem) {
+            heartsCollected++;
+            soundEngine.playClick(); 
+            
+            const gameArea = document.getElementById('gameArea');
+            for (let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.textContent = '💕';
+                particle.style.position = 'absolute';
+                particle.style.left = elem.style.left; 
+                particle.style.top = elem.style.top;
+                particle.style.fontSize = '20px';
+                particle.style.pointerEvents = 'none';
+                gameArea.appendChild(particle);
+                
+                const angle = (Math.PI * 2 * i) / 10;
+                const vx = Math.cos(angle) * 0.5;
+                const vy = Math.sin(angle) * 0.5;
+                let x = parseFloat(elem.style.left);
+                let y = parseFloat(elem.style.top);
+                let opacity = 1;
+
+                const animate = () => {
+                    x += vx;
+                    y += vy;
+                    opacity -= 0.02;
+                    particle.style.left = x + '%';
+                    particle.style.top = y + '%';
+                    particle.style.opacity = opacity;
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        particle.remove();
+                    }
+                };
+                requestAnimationFrame(animate);
+            }
+            
+            elem.remove();
+            document.getElementById('heartScore').textContent = heartsCollected;
+            
+            if (heartsCollected === 5) {
+                soundEngine.playSparkle(); // Win sound
+                setTimeout(() => {
+                    createConfetti();
+                    document.getElementById('victoryScreen').classList.add('show');
+                }, 500);
+            }
+        }
+
+        function createConfetti() {
+            const victoryScreen = document.getElementById('victoryScreen');
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.animationDelay = (Math.random() * 2) + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confetti.style.background = ['#ff006e', '#7209b7', '#ffd700', '#00f2ff'][Math.floor(Math.random() * 4)];
+                victoryScreen.appendChild(confetti);
+            }
+        }
+
+        function typeMessage() {
+            const messages = [
+                { text: "Hey Kanak 👋", class: "greeting", delay: 1500 },
+                { text: "I have something to tell you...", class: "", delay: 2000 },
+                { text: "Take a seat and get comfortable 🪑✨", class: "", delay: 2000 },
+                { text: "But wait... before I start...", class: "special", delay: 2000 },
+                { text: "I know you love games 🎮", class: "", delay: 1500 },
+                { text: "And you did AMAZING on that last one! 🌟", class: "", delay: 2000 },
+                { text: "So here's one more game for you... 💭", class: "", delay: 2500 }
+            ];
+            
+            const container = document.getElementById('messageContainer');
+            container.innerHTML = ''; 
+            let messageIndex = 0;
+            
+            function typeNextMessage() {
+                if (messageIndex >= messages.length) {
+                    setTimeout(() => nextScene(3), 2000);
+                    return;
+                }
+                
+                const msg = messages[messageIndex];
+                const line = document.createElement('div');
+                line.className = 'typing-line ' + (msg.class || '');
+                container.appendChild(line);
+                
+                let charIndex = 0;
+                const typeInterval = setInterval(() => {
+                    if (charIndex < msg.text.length) {
+                        line.textContent = msg.text.substring(0, charIndex + 1);
+                        soundEngine.playClick(); 
+                        charIndex++;
+                    } else {
+                        clearInterval(typeInterval);
+                        line.style.opacity = '1';
+                        messageIndex++;
+                        setTimeout(typeNextMessage, msg.delay);
+                    }
+                }, 60); 
+            }
+            
+            typeNextMessage();
+        }
+
+        function startQuiz() {
+            const questions = [
+                {
+                    question: "What month did we meet first? 📅",
+                    options: [
+                        { text: "🌸 FEBRUARY", correct: false },
+                        { text: "🌺 MAY", correct: false },
+                        { text: "🍂 SEPTEMBER", correct: true },
+                        { text: "🍁 NOVEMBER", correct: false }
+                    ]
+                },
+                {
+                    question: "What's my favourite thing about you? 💭",
+                    options: [
+                        { text: "✨ MY HONESTY", correct: true },
+                        { text: "💫 MY BEHAVIOR", correct: true },
+                        { text: "🌟 MY WAY OF UNDERSTANDING", correct: true },
+                        { text: "💝 MY SENSE OF THINKING", correct: true },
+                        { text: "💖 ALL OF THE ABOVE", correct: true },
+                        { text: "🤔 NOTHING", correct: true }
+                    ]
+                }
+            ];
+            showQuizQuestion(questions[quizProgress], questions);
+        }
+
+        function showQuizQuestion(q, allQuestions) {
+            const content = document.getElementById('quizContent');
+            content.innerHTML = `
+                <div class="quiz-question">${q.question}</div>
+                <div class="quiz-options" id="quizOptions">
+                    ${q.options.map((opt, i) => `
+                        <button class="quiz-option" onclick="answerQuiz(${i}, ${quizProgress})">${opt.text}</button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function answerQuiz(optIndex, qIndex) {
+            soundEngine.playSparkle(); 
+            const options = document.querySelectorAll('.quiz-option');
+            options[optIndex].classList.add('correct');
+            
+            setTimeout(() => {
+                if (qIndex === 1) {
+                    const appreciation = document.createElement('div');
+                    appreciation.className = 'appreciation-text';
+                    appreciation.textContent = 'Every single thing you think about me matters to me ❤️';
+                    document.getElementById('quizContent').appendChild(appreciation);
+                }
+                
+                document.getElementById('quizHearts').textContent = (qIndex + 2) + '/5';
+                
+                const card = document.getElementById('quizCard');
+                card.classList.add('card-flip');
+                soundEngine.playSwoosh();
+
+                setTimeout(() => {
+                    card.classList.remove('card-flip');
+                    quizProgress++;
+                    
+                    if (quizProgress < 2) {
+                        const questions = [
+                           {
+                                question: "What month did we meet first? 📅",
+                                options: [
+                                    { text: "🌸 FEBRUARY", correct: false },
+                                    { text: "🌺 MAY", correct: false },
+                                    { text: "🍂 SEPTEMBER", correct: true },
+                                    { text: "🍁 NOVEMBER", correct: false }
+                                ]
+                            },
+                            {
+                                question: "What's my favourite thing about you? 💭",
+                                options: [
+                                    { text: "✨ MY HONESTY", correct: true },
+                                    { text: "💫 MY BEHAVIOR", correct: true },
+                                    { text: "🌟 MY WAY OF UNDERSTANDING", correct: true },
+                                    { text: "💝 MY SENSE OF THINKING", correct: true },
+                                    { text: "💖 ALL OF THE ABOVE", correct: true },
+                                    { text: "🤔 NOTHING", correct: true }
+                                ]
+                            }
+                        ];
+                        showQuizQuestion(questions[quizProgress], questions);
+                    } else {
+                        setTimeout(() => nextScene(4), 1500);
+                    }
+                }, 600);
+            }, 1500);
+        }
+
+        function startDeepQuestions() {
+            const questions = [
+                {
+                    question: "Are you ready for something honest?",
+                    smallText: "",
+                    buttons: ["YES 💕", "NO 💭"]
+                },
+                {
+                    question: "Do you trust me?",
+                    smallText: "(please say yes 🥺)",
+                    buttons: ["YES ❤️", "NO 💔"]
+                },
+                {
+                    question: "Can I tell you,what do I feel about you? 💖",
+                    smallText: "(please say yes 💭)",
+                    buttons: ["YES 💝", "NOT YET 🤔"],
+                    showOkk: true
+                },
+                {
+                    question: "Do you remember when we talked about expressing feelings?",
+                    smallText: "(please say yes 🌸)",
+                    buttons: ["YES, I REMEMBER 💕", "REMIND ME 💭"]
+                }
+            ];
+            showDeepQuestion(questions[deepProgress]);
+        }
+
+        function showDeepQuestion(q) {
+            const content = document.getElementById('deepContent');
+            content.innerHTML = `
+                <div class="deep-question">${q.question}</div>
+                ${q.smallText ? `<div class="small-text">${q.smallText}</div>` : ''}
+                <div class="deep-buttons">
+                    <button class="deep-btn" onclick="answerDeep(0)">${q.buttons[0]}</button>
+                    <button class="deep-btn no" onclick="answerDeep(1)">${q.buttons[1]}</button>
+                </div>
+            `;
+        }
+
+        function answerDeep(btnIndex) {
+            soundEngine.playClick();
+            
+            const questions = [
+                {
+                    question: "Are you ready for something honest?",
+                    smallText: "",
+                    buttons: ["YES 💕", "NO 💭"]
+                },
+                {
+                    question: "Do you trust me?",
+                    smallText: "(please say yes 🥺)",
+                    buttons: ["YES ❤️", "NO 💔"]
+                },
+                {
+                    question: "Can I tell you,what do I feel about you? 💖",
+                    smallText: "(please say yes 💭)",
+                    buttons: ["YES 💝", "NOT YET 🤔"],
+                    showOkk: true
+                },
+                {
+                    question: "Do you remember when we talked about expressing feelings?",
+                    smallText: "(please say yes 🌸)",
+                    buttons: ["YES, I REMEMBER 💕", "REMIND ME 💭"]
+                }
+            ];
+            
+            const card = document.getElementById('deepCard');
+            card.classList.add('card-flip');
+            soundEngine.playSwoosh();
+            
+            setTimeout(() => {
+                if (questions[deepProgress] && questions[deepProgress].showOkk) {
+                    const okk = document.createElement('div');
+                    okk.className = 'okk-text';
+                    okk.textContent = 'Okk..🥰';
+                    document.getElementById('deepContent').appendChild(okk);
+                    setTimeout(() => { continueDeep(questions); }, 2000);
+                } else {
+                    continueDeep(questions);
+                }
+            }, 600);
+        }
+
+        function continueDeep(questions) {
+            const card = document.getElementById('deepCard');
+            card.classList.remove('card-flip');
+            document.getElementById('deepHearts').textContent = (deepProgress + 4) + '/5';
+            deepProgress++;
+            if (deepProgress < 4) {
+                setTimeout(() => showDeepQuestion(questions[deepProgress]), 600);
+            } else {
+                setTimeout(() => nextScene(5), 1500);
+            }
+        }
+
+        function initScratch() {
+            const canvas = document.getElementById('scratchCanvas');
+            const parent = canvas.parentElement;
+            const ctx = canvas.getContext('2d');
+            canvas.width = parent.offsetWidth;
+            canvas.height = parent.offsetHeight;
+            
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#c0c0c0'); gradient.addColorStop(0.5, '#e8e8e8'); gradient.addColorStop(1, '#c0c0c0');
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#fff';
+            for(let i=0; i<50; i++) {
+                ctx.beginPath(); ctx.arc(Math.random()*canvas.width, Math.random()*canvas.height, 1, 0, Math.PI*2); ctx.fill();
+            }
+            
+            let isScratching = false;
+            let scratchedPercent = 0;
+            
+            function scratch(e) {
+                const rect = canvas.getBoundingClientRect();
+                let x, y;
+                if (e.changedTouches && e.changedTouches.length > 0) {
+                    x = e.changedTouches[0].clientX - rect.left; y = e.changedTouches[0].clientY - rect.top;
+                } else {
+                    x = e.clientX - rect.left; y = e.clientY - rect.top;
+                }
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath(); ctx.arc(x, y, 30, 0, Math.PI * 2); ctx.fill();
+                
+                if (Math.random() > 0.8) {
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    let transparent = 0;
+                    for (let i = 3; i < imageData.data.length; i += 16) { if (imageData.data[i] === 0) transparent++; }
+                    scratchedPercent = (transparent / (imageData.data.length / 16)) * 100;
+                    
+                    if (scratchedPercent > 60 && canvas.style.opacity !== '0') {
+                        soundEngine.playSparkle();
+                        canvas.style.transition = 'opacity 0.8s'; canvas.style.opacity = '0'; canvas.style.pointerEvents = 'none';
+                        setTimeout(() => {
+                            document.getElementById('scratchBtn').style.display = 'block';
+                            document.getElementById('scratchBtn').style.animation = 'fadeIn 0.5s forwards';
+                        }, 800);
+                    }
+                }
+            }
+            
+            canvas.addEventListener('mousedown', (e) => { isScratching = true; scratch(e); });
+            canvas.addEventListener('mouseup', () => isScratching = false);
+            canvas.addEventListener('mousemove', (e) => { if (isScratching) scratch(e); });
+            canvas.addEventListener('touchstart', (e) => { e.preventDefault(); isScratching = true; scratch(e); }, {passive: false});
+            canvas.addEventListener('touchend', () => isScratching = false);
+            canvas.addEventListener('touchmove', (e) => { e.preventDefault(); if (isScratching) scratch(e); }, {passive: false});
+        }
+
+        function startTyping() {
+            const lines = [ "Hey Kanak...", "I've been thinking about something...", "For a while now...", "And I need to tell you...", "The truth is...", "I can't keep this inside anymore." ];
+            const container = document.getElementById('typingContainer'); container.innerHTML = '';
+            let lineIndex = 0;
+            
+            function typeLine() {
+                if (lineIndex >= lines.length) {
+                    const btn = document.createElement('button');
+                    btn.className = 'ready-button'; btn.textContent = 'Are you ready? 💕';
+                    btn.onclick = () => { soundEngine.playClick(); nextScene(9); };
+                    container.appendChild(btn);
+                    setTimeout(() => { btn.style.opacity = '1'; }, 100);
+                    return;
+                }
+                const line = document.createElement('div');
+                line.className = 'typed-line'; container.appendChild(line);
+                let charIndex = 0; const text = lines[lineIndex];
+                
+                const typeInterval = setInterval(() => {
+                    if (charIndex < text.length) {
+                        line.textContent = text.substring(0, charIndex + 1);
+                        soundEngine.playClick(); charIndex++;
+                    } else {
+                        clearInterval(typeInterval); line.style.opacity = '1'; lineIndex++;
+                        setTimeout(typeLine, lineIndex < 4 ? 1500 : 2000);
+                    }
+                }, 60); 
+            }
+            setTimeout(typeLine, 500);
+        }
+
+        function startCountdown() {
+            let count = 10;
+            const numberElem = document.getElementById('countdownNumber');
+            const container = document.getElementById('floatingEmojis'); container.innerHTML = '';
+            const emojis = ['💕', '💖', '💗', '⭐', '✨', '🌟', '🌹'];
+            for (let i = 0; i < 30; i++) {
+                const emoji = document.createElement('div'); emoji.className = 'floating-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + '%'; emoji.style.top = Math.random() * 100 + '%';
+                emoji.style.animationDelay = Math.random() * 3 + 's'; emoji.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(emoji);
+            }
+            const interval = setInterval(() => {
+                if (count <= 0) {
+                    clearInterval(interval); numberElem.style.animation = 'none';
+                    soundEngine.playSparkle(); // Explosion sound replacement
+                    const s9 = document.getElementById('scene9'); s9.style.animation = 'none'; s9.style.background = 'white';
+                    for (let i = 0; i < 100; i++) {
+                        const confetti = document.createElement('div'); confetti.className = 'confetti';
+                        confetti.style.left = Math.random() * 100 + '%'; confetti.style.top = '-20px';
+                        confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+                        confetti.style.background = ['#ff006e', '#7209b7', '#ffd700', '#00f2ff', '#ff6b95'][Math.floor(Math.random() * 5)];
+                        s9.appendChild(confetti);
+                    }
+                    setTimeout(() => nextScene(10), 2000);
+                } else {
+                    count--; numberElem.textContent = count;
+                    soundEngine.playBeep(400 + (count * 50));
+                }
+            }, 1000);
+        }
+
+        function showFinalMessage() {
+            soundEngine.playSparkle();
+            document.getElementById('finalMessage').classList.add('show');
+        }
+
+        createStars();
+    </script>
+</body>
+</html>
